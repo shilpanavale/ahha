@@ -43,8 +43,14 @@ class ResetPassSuccessState extends State<ResetPassSuccess> {
                  decoration: BoxDecoration(
                    borderRadius: BorderRadius.circular(15.0),
                    color: Colors.transparent,
+                   image: DecorationImage(
+                     fit: BoxFit.fill,
+                     image: AssetImage(
+                       AssetsFiles.check_box,
+                     ),
+                   ),
                  ),
-                 child: Icon(Icons.check_box,color: ColorsForApp.greenColor,size: 100,),
+                // child: Icon(Icons.check_box,color: ColorsForApp.greenColor,size: 100,),
                ),
              ),
              SizedBox(height: 20,),

@@ -34,7 +34,21 @@ class LoginPageState extends State<LoginPage> {
              Row(
                mainAxisAlignment: MainAxisAlignment.center,
                children: [
-                 Text('Ahhaa',style: TextStyle(fontSize:20,color: ColorsForApp.greenColor,fontWeight: FontWeight.bold),),
+               Container(
+                   height: 150,
+                   width: double.infinity,
+                   decoration: BoxDecoration(
+                     borderRadius: BorderRadius.circular(15.0),
+                     color: Colors.transparent,
+                     image: DecorationImage(
+                       fit: BoxFit.fill,
+                       image: AssetImage(
+                         AssetsFiles.ahhaaLogo,
+                       ),
+                     ),
+                   ),
+                 ),
+                 //Text('Ahhaa',style: TextStyle(fontSize:20,color: ColorsForApp.greenColor,fontWeight: FontWeight.bold),),
                ],
              ),
              const SizedBox(height: 20,),

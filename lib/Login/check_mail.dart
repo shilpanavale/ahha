@@ -6,14 +6,14 @@ import 'package:demo/Utils/text_fields.dart';
 import 'package:flutter/material.dart';
 
 
-class AccountVerified extends StatefulWidget {
+class CheckMail extends StatefulWidget {
 
-  const AccountVerified({Key? key}) : super(key: key);
+  const CheckMail({Key? key}) : super(key: key);
   @override
-  AccountVerifiedState createState() => AccountVerifiedState();
+  CheckMailState createState() => CheckMailState();
 }
 
-class AccountVerifiedState extends State<AccountVerified> {
+class CheckMailState extends State<CheckMail> {
   TextEditingController newPassController=TextEditingController();
   TextEditingController confirmPassController=TextEditingController();
 
@@ -59,7 +59,7 @@ class AccountVerifiedState extends State<AccountVerified> {
                      image: DecorationImage(
                        fit: BoxFit.fill,
                        image: AssetImage(
-                         AssetsFiles.accountSuccess,
+                         AssetsFiles.openEmail,
                        ),
                      ),
                    ),
@@ -70,19 +70,20 @@ class AccountVerifiedState extends State<AccountVerified> {
                Row(
                  mainAxisAlignment: MainAxisAlignment.center,
                  children: [
-                   Text('Your account has been verified.',style: StyleForApp.textStyle14NormalWhite,),
+                   Text('Check your mail',style: StyleForApp.textStyle14NormalWhite,),
                  ],
                ),
                SizedBox(height: 15,),
                Row(
                  mainAxisAlignment: MainAxisAlignment.center,
                  children: [
-                   Text('Click anyware to continue.',style: StyleForApp.textStyle13NormalWhite,),
+                   Text('We have sent confirmation link to email.',style: StyleForApp.textStyle13NormalWhite,),
                  ],
                ),
-               SizedBox(height: 20,),
-
                SizedBox(height: 30,),
+               CommonButtonForAllApp(title: 'Open mail',onPressed: (){
+                 Navigator.push(context, MaterialPageRoute(builder: (context)=>const LoginPage()));
+               },),
 
 
 

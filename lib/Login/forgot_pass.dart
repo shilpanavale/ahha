@@ -1,3 +1,4 @@
+import 'package:demo/Login/reset_pass.dart';
 import 'package:demo/Login/reset_pass_success.dart';
 import 'package:demo/Utils/app_theme.dart';
 import 'package:demo/Utils/asset_files.dart';
@@ -6,14 +7,14 @@ import 'package:demo/Utils/text_fields.dart';
 import 'package:flutter/material.dart';
 
 
-class ResetPassPage extends StatefulWidget {
+class ForgotPassPage extends StatefulWidget {
 
-  const ResetPassPage({Key? key}) : super(key: key);
+  const ForgotPassPage({Key? key}) : super(key: key);
   @override
-  ResetPassPageState createState() => ResetPassPageState();
+  ForgotPassPageState createState() => ForgotPassPageState();
 }
 
-class ResetPassPageState extends State<ResetPassPage> {
+class ForgotPassPageState extends State<ForgotPassPage> {
   TextEditingController newPassController=TextEditingController();
   TextEditingController confirmPassController=TextEditingController();
 
@@ -58,22 +59,23 @@ class ResetPassPageState extends State<ResetPassPage> {
              Row(
                mainAxisAlignment: MainAxisAlignment.center,
                children: [
-                 Text('Reset Password',style: StyleForApp.headline,),
+                 Text('Forgot Password',style: StyleForApp.headline,),
                ],
              ),
              SizedBox(height: 15,),
              Row(
                mainAxisAlignment: MainAxisAlignment.center,
                children: [
-                 Text('Enter your new password',style: StyleForApp.textStyle13NormalWhite,),
+                 Text('Enter the email associated with your account\n and we will send an email with instructions to\n'
+                     'reset your password',style: StyleForApp.textStyle13NormalWhite,),
                ],
              ),
              SizedBox(height: 20,),
-             CommonTextField.passwordTextField(Icons.remove_red_eye, "Enter new password", newPassController, TextInputType.text),
-             CommonTextField.passwordTextField(Icons.remove_red_eye, "Confirm your new password", confirmPassController, TextInputType.text),
+             CommonTextField.normalTextField(Icons.email, "Email address", newPassController, TextInputType.text),
+
              SizedBox(height: 30,),
              CommonButtonForAllApp(title: 'Reset',onPressed: (){
-               Navigator.push(context, MaterialPageRoute(builder: (context)=>ResetPassSuccess()));
+               Navigator.push(context, MaterialPageRoute(builder: (context)=>ResetPassPage()));
              },),
              const SizedBox(height: 10),
 

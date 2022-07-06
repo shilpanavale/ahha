@@ -28,18 +28,25 @@ class ResetPassSuccessState extends State<ResetPassSuccess> {
          child: Column( 
            children: [
              const SizedBox(height: 20),
-             Row(
-               mainAxisAlignment: MainAxisAlignment.center,
-               children: [
-                 Text('Ahhaa',style: TextStyle(fontSize:24,color: ColorsForApp.greenColor,fontWeight: FontWeight.bold),),
-               ],
+             Container(
+               height: 90,
+               width: 140,
+               decoration: BoxDecoration(
+                 borderRadius: BorderRadius.circular(15.0),
+                 color: Colors.transparent,
+                 image: DecorationImage(
+                   fit: BoxFit.fill,
+                   image: AssetImage(
+                     AssetsFiles.ahhaaLogo,
+                   ),
+                 ),
+               ),
              ),
-             SizedBox(height: 40,),
              Padding(
                padding: const EdgeInsets.all(15.0),
                child: Container(
-                 height: 100,
-                 width: double.infinity,
+                 height: 170,
+                 width: 250,
                  decoration: BoxDecoration(
                    borderRadius: BorderRadius.circular(15.0),
                    color: Colors.transparent,
@@ -53,7 +60,7 @@ class ResetPassSuccessState extends State<ResetPassSuccess> {
                 // child: Icon(Icons.check_box,color: ColorsForApp.greenColor,size: 100,),
                ),
              ),
-             SizedBox(height: 20,),
+            // const SizedBox(height: 20,),
              Row(
                mainAxisAlignment: MainAxisAlignment.center,
                children: [

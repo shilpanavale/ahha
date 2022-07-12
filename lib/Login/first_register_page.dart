@@ -2,7 +2,6 @@ import 'package:demo/Login/account_verified.dart';
 import 'package:demo/Login/change_pass.dart';
 import 'package:demo/Login/check_mail.dart';
 import 'package:demo/Login/forgot_pass.dart';
-import 'package:demo/Login/first_register_page.dart';
 import 'package:demo/Login/reset_pass.dart';
 import 'package:demo/Login/resgister_page.dart';
 import 'package:demo/Utils/app_theme.dart';
@@ -13,15 +12,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import '../Utils/custome_app_bar.dart';
 
-class LoginPage extends StatefulWidget {
 
-  const LoginPage({Key? key}) : super(key: key);
+class FirstRegisterPage extends StatefulWidget {
+
+  const FirstRegisterPage({Key? key}) : super(key: key);
   @override
-  LoginPageState createState() => LoginPageState();
+  FirstRegisterPageState createState() => FirstRegisterPageState();
 }
 
-class LoginPageState extends State<LoginPage> {
+class FirstRegisterPageState extends State<FirstRegisterPage> {
   TextEditingController emailController=TextEditingController();
   TextEditingController passController=TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -33,6 +34,10 @@ class LoginPageState extends State<LoginPage> {
     // TODO: implement build
    return Scaffold(
      backgroundColor: ColorsForApp.appBackGround,
+     appBar: CustomAppBar(
+       onPressed: () {
+         Navigator.of(context);
+       }, title: '',),
      body: SafeArea(
        child: SingleChildScrollView(
          child: loginOption==false?
@@ -40,7 +45,6 @@ class LoginPageState extends State<LoginPage> {
              key: _formKey,
              child: Column(
              children: [
-               const SizedBox(height: 10),
                AppLogo.appLogo,
               // const SizedBox(height: 20,),
                Padding(
@@ -64,7 +68,7 @@ class LoginPageState extends State<LoginPage> {
                Row(
                  mainAxisAlignment: MainAxisAlignment.center,
                  children: const [
-                   Text('Login',style: StyleForApp.headline,),
+                   Text('Register',style: StyleForApp.headline,),
                  ],
                ),
                const SizedBox(height: 20,),
@@ -99,64 +103,16 @@ class LoginPageState extends State<LoginPage> {
                    ], //<Widget>[]
                  ),
                ),
-               CommonButtonForAllApp(title: 'Login',onPressed: (){
+               CommonButtonForAllApp(title: 'Register',onPressed: (){
                  if (_formKey.currentState!.validate()) {
                    // If the form is valid,
                    // perform further actions here
-                   Navigator.push(context, MaterialPageRoute(builder: (context)=>const ChangePassPage()));
+                   Navigator.push(context, MaterialPageRoute(builder: (context)=>const CheckMail()));
                  }
 
                },),
                const SizedBox(height: 10),
-               RichText(
-                 text:  TextSpan(
-                   text: "Forgot Password? ",
-                   style: const TextStyle(
-                     fontSize: 15.0,
-                     color: Colors.grey,
-                   ),
-                   children: [
-                      TextSpan(
-                        recognizer: TapGestureRecognizer()..onTap = () {
-                          // Single tapped.
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>const ForgotPassPage()));
-                        },
 
-                       text: "Click here",
-                       style: const TextStyle(
-                         fontSize: 15.0,
-                         color: ColorsForApp.nearlyWhite,
-                         fontWeight: FontWeight.w500,
-                       ),
-                     )
-                   ],
-                 ),
-               ),
-               const SizedBox(height: 15),
-               RichText(
-                 text: TextSpan(
-                   text: "Dont have an account? ",
-                   style: const TextStyle(
-                     fontSize: 16.0,
-                     color: ColorsForApp.nearlyWhite,
-                   ),
-                   children: [
-                     TextSpan(
-                       text: "Register",
-                       recognizer: TapGestureRecognizer()..onTap = () {
-                         // Single tapped.
-                         Navigator.push(context, MaterialPageRoute(builder: (context)=>const RegisterPage()));
-                       },
-                       style: TextStyle(
-                         fontSize: 16.0,
-                         color: ColorsForApp.greenColor,
-                         fontWeight: FontWeight.w500,
-                       ),
-                     )
-                   ],
-                 ),
-               ),
-               const SizedBox(height: 10),
 
              ],
          ),
@@ -164,7 +120,7 @@ class LoginPageState extends State<LoginPage> {
          Column(
            children: [
              const SizedBox(height: 10),
-             AppLogo.appLogo,
+           AppLogo.appLogo,
              // const SizedBox(height: 20,),
              Padding(
                padding: const EdgeInsets.all(15.0),
@@ -187,7 +143,7 @@ class LoginPageState extends State<LoginPage> {
              Row(
                mainAxisAlignment: MainAxisAlignment.center,
                children: const [
-                  Text('Login',style: StyleForApp.headline,),
+                  Text('Register',style: StyleForApp.headline,),
                ],
              ),
              const SizedBox(height: 20,),
@@ -314,30 +270,7 @@ class LoginPageState extends State<LoginPage> {
              ),
              const SizedBox(height: 10),
 
-             RichText(
-               text: TextSpan(
-                 text: "Dont have an account? ",
-                 style: const TextStyle(
-                   fontSize: 16.0,
-                   color: ColorsForApp.nearlyWhite,
-                 ),
-                 children: [
-                   TextSpan(
-                     text: "Register",
-                     recognizer: TapGestureRecognizer()..onTap = () {
-                       // Single tapped.
-                       Navigator.push(context, MaterialPageRoute(builder: (context)=>const FirstRegisterPage()));
-                     },
-                     style: TextStyle(
-                       fontSize: 16.0,
-                       color: ColorsForApp.greenColor,
-                       fontWeight: FontWeight.w500,
-                     ),
-                   )
-                 ],
-               ),
-             ),
-             const SizedBox(height: 10),
+
 
            ],
          ),

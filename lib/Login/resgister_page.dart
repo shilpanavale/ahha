@@ -5,10 +5,12 @@ import 'package:demo/Login/reset_pass.dart';
 import 'package:demo/Utils/app_theme.dart';
 import 'package:demo/Utils/asset_files.dart';
 import 'package:demo/Utils/common_button.dart';
+import 'package:demo/Utils/custome_app_bar.dart';
 import 'package:demo/Utils/text_fields.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class RegisterPage extends StatefulWidget {
@@ -21,7 +23,7 @@ class RegisterPage extends StatefulWidget {
 class RegisterPageState extends State<RegisterPage> {
   TextEditingController emailController=TextEditingController();
   TextEditingController passController=TextEditingController();
-
+  bool _passwordVisible = false;
   bool value=false;
   bool loginOption=true;
   @override
@@ -29,26 +31,17 @@ class RegisterPageState extends State<RegisterPage> {
     // TODO: implement build
    return Scaffold(
      backgroundColor: ColorsForApp.appBackGround,
+     appBar: CustomAppBar(
+       onPressed: () {
+         Navigator.of(context);
+       }, title: '',),
      body: SafeArea(
        child: SingleChildScrollView(
          child:
          Column(
            children: [
-             const SizedBox(height: 10),
-             Container(
-                 height: 90,
-                 width: 140,
-                 decoration: BoxDecoration(
-                   borderRadius: BorderRadius.circular(15.0),
-                   color: Colors.transparent,
-                   image: DecorationImage(
-                     fit: BoxFit.fill,
-                     image: AssetImage(
-                       AssetsFiles.ahhaaLogo,
-                     ),
-                   ),
-                 ),
-               ),
+            // const SizedBox(height: 10),
+             AppLogo.appLogo,
             // const SizedBox(height: 20,),
              const SizedBox(height: 50,),
              Row(
@@ -58,9 +51,9 @@ class RegisterPageState extends State<RegisterPage> {
                ],
              ),
              const SizedBox(height: 20,),
-             CommonTextField.normalTextField(null, "Email Address", emailController, TextInputType.emailAddress),
-             CommonTextField.passwordTextField(null, "Password", passController, TextInputType.text),
-             CommonTextField.passwordTextField(null, "Confirm Password", passController, TextInputType.text),
+             CommonTextField.emailTextField(null, "Email Address", emailController, TextInputType.emailAddress),
+             CommonTextField.passwordTextField(null, "Password", passController, TextInputType.text,_passwordVisible,setState),
+             CommonTextField.passwordTextField(null, "Confirm Password", passController, TextInputType.text,_passwordVisible,setState),
              const SizedBox(height: 15),
              CommonButtonForAllApp(title: 'Register',onPressed: (){
                Navigator.push(context, MaterialPageRoute(builder: (context)=>const AccountVerified()));
@@ -77,10 +70,25 @@ class RegisterPageState extends State<RegisterPage> {
                     TextSpan(
                       recognizer: TapGestureRecognizer()..onTap = () {
                         // Single tapped.
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const ResetPassPage()));
+                        _launchUrl("https://www.ahhaa.com/terms");
+                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>const ResetPassPage()));
                       },
 
-                     text: "Terms & Policy",
+                     text: "Terms ",
+                     style: const TextStyle(
+                       fontSize: 15.0,
+                       color: ColorsForApp.nearlyWhite,
+                       fontWeight: FontWeight.w500,
+                     ),
+                   ),
+                   TextSpan(
+                     recognizer: TapGestureRecognizer()..onTap = () {
+                       // Single tapped.
+                       _launchUrl("https://www.ahhaa.com/privacy-policy");
+                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>const ResetPassPage()));
+                     },
+
+                     text: "& Policy",
                      style: const TextStyle(
                        fontSize: 15.0,
                        color: ColorsForApp.nearlyWhite,
@@ -123,7 +131,7 @@ class RegisterPageState extends State<RegisterPage> {
      ),
    );
   }
- void resetPass(){
-
- }
+  void _launchUrl(String _url) async {
+    if (!await launchUrl(Uri.parse(_url))) throw 'Could not launch $_url';
+  }
 }

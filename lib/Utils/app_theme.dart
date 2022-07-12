@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:demo/Utils/asset_files.dart';
 import 'package:flutter/material.dart';
 
 class ColorsForApp{
@@ -39,4 +40,28 @@ class HexColor extends Color {
     }
     return int.parse(hexColor, radix: 16);
   }
+}
+
+class AppLogo{
+  static Widget appLogo =Container(
+    height: 100,
+    width: 140,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(15.0),
+      color: Colors.transparent,
+      image: DecorationImage(
+        fit: BoxFit.fill,
+        image: AssetImage(
+          AssetsFiles.ahhaaLogo,
+        ),
+      ),
+    ),
+  );
+  static Widget backLeadingButton =Container(
+    alignment: Alignment.topLeft,
+    height: 10,
+    width: 140,
+
+    child: const Icon(Icons.arrow_back,color: ColorsForApp.nearlyWhite,),
+  );
 }

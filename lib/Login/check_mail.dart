@@ -1,9 +1,12 @@
 import 'package:demo/Login/login_page.dart';
+import 'package:demo/Login/reset_pass.dart';
 import 'package:demo/Utils/app_theme.dart';
 import 'package:demo/Utils/asset_files.dart';
 import 'package:demo/Utils/common_button.dart';
 import 'package:demo/Utils/text_fields.dart';
 import 'package:flutter/material.dart';
+
+import '../Utils/custome_app_bar.dart';
 
 
 class CheckMail extends StatefulWidget {
@@ -23,6 +26,10 @@ class CheckMailState extends State<CheckMail> {
     // TODO: implement build
    return Scaffold(
      backgroundColor: ColorsForApp.appBackGround,
+     appBar: CustomAppBar(
+       onPressed: () {
+         Navigator.of(context);
+       }, title: '',),
      body: GestureDetector(
        onTap: (){
 
@@ -33,21 +40,7 @@ class CheckMailState extends State<CheckMail> {
          child: SingleChildScrollView(
            child: Column(
              children: [
-               const SizedBox(height: 20),
-               Container(
-                 height: 80,
-                 width: 140,
-                 decoration: BoxDecoration(
-                   borderRadius: BorderRadius.circular(15.0),
-                   color: Colors.transparent,
-                   image: DecorationImage(
-                     fit: BoxFit.fill,
-                     image: AssetImage(
-                       AssetsFiles.ahhaaLogo,
-                     ),
-                   ),
-                 ),
-               ),
+               AppLogo.appLogo,
                Padding(
                  padding: const EdgeInsets.all(15.0),
                  child: Container(
@@ -82,7 +75,7 @@ class CheckMailState extends State<CheckMail> {
                ),
                SizedBox(height: 30,),
                CommonButtonForAllApp(title: 'Open mail',onPressed: (){
-                 Navigator.push(context, MaterialPageRoute(builder: (context)=>const LoginPage()));
+                 Navigator.push(context, MaterialPageRoute(builder: (context)=>const ResetPassPage()));
                },),
 
 

@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:demo/Login/login_page.dart';
 import 'package:demo/Utils/app_theme.dart';
 import 'package:demo/Utils/asset_files.dart';
 import 'package:demo/Utils/common_button.dart';
 import 'package:demo/Utils/text_fields.dart';
+import 'package:demo/dashboard_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -18,6 +21,33 @@ class AccountVerifiedState extends State<AccountVerified> {
   TextEditingController confirmPassController=TextEditingController();
 
   bool value=false;
+  startTime() async {
+    //SharedPreferences preferences = await SharedPreferences.getInstance();
+    // setState(() {
+    //  loginStatus = preferences.getBool("islogin");
+    // });
+    var _duration = Duration(seconds: 2);
+    return Timer(_duration, navigationPage);
+  }
+
+  Future<void> navigationPage() async {
+
+
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) => const MyHomePage(),
+      ),
+          (route) => false,
+    );
+
+  }
+
+  @override
+  void initState() {
+    startTime();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -33,21 +63,8 @@ class AccountVerifiedState extends State<AccountVerified> {
          child: SingleChildScrollView(
            child: Column(
              children: [
-               const SizedBox(height: 20),
-               Container(
-                 height: 80,
-                 width: 140,
-                 decoration: BoxDecoration(
-                   borderRadius: BorderRadius.circular(15.0),
-                   color: Colors.transparent,
-                   image: DecorationImage(
-                     fit: BoxFit.fill,
-                     image: AssetImage(
-                       AssetsFiles.ahhaaLogo,
-                     ),
-                   ),
-                 ),
-               ),
+              AppLogo.appLogo,
+
                Padding(
                  padding: const EdgeInsets.all(15.0),
                  child: Container(

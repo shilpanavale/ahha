@@ -1,4 +1,5 @@
 import 'package:demo/Utils/app_theme.dart';
+import 'package:demo/Utils/asset_files.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -29,7 +30,20 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: ColorsForApp.appBackGround,
         elevation: 0,
-        title:  Text('Ahhaa',style: TextStyle(color: ColorsForApp.greenColor),),
+        title:  Container(
+          height: 80,
+          width: 110,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15.0),
+            color: Colors.transparent,
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              image: AssetImage(
+                AssetsFiles.ahhaaLogo,
+              ),
+            ),
+          ),
+        ),
       ),
       body: Column(
         //mainAxisAlignment: MainAxisAlignment.center,

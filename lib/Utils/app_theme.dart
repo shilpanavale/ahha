@@ -17,7 +17,8 @@ class ColorsForApp{
 class StyleForApp{
   static const String fontName = 'WorkSans';
   static TextStyle  textStyle13NormalWhite = const TextStyle(fontSize: 13,color: Colors.white);
-  static TextStyle  textStyle14NormalWhite = const TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold);
+  static TextStyle  textStyle14BoldWhite = const TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold);
+  static TextStyle  textStyle14BoldGreen =  TextStyle(fontSize: 15,color: ColorsForApp.greenColor,fontWeight: FontWeight.bold);
 
   static const TextStyle headline = TextStyle(
     fontFamily: fontName,

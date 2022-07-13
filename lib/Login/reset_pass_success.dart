@@ -56,7 +56,7 @@ class ResetPassSuccessState extends State<ResetPassSuccess> {
              Row(
                mainAxisAlignment: MainAxisAlignment.center,
                children: [
-                 Text('Your password has been successfully reset.',style: StyleForApp.textStyle14NormalWhite,),
+                 Text('Your password has been successfully reset.',style: StyleForApp.textStyle14BoldWhite,),
                ],
              ),
              SizedBox(height: 15,),

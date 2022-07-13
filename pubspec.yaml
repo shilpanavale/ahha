@@ -38,6 +38,7 @@ dependencies:
   url_launcher: ^6.1.4
   liquid_swipe:
   path:
+  syncfusion_flutter_charts: ^20.2.38
 
 dev_dependencies:
   flutter_test:

@@ -63,7 +63,7 @@ class CheckMailState extends State<CheckMail> {
                Row(
                  mainAxisAlignment: MainAxisAlignment.center,
                  children: [
-                   Text('Check your mail',style: StyleForApp.textStyle14NormalWhite,),
+                   Text('Check your mail',style: StyleForApp.textStyle14BoldWhite,),
                  ],
                ),
                SizedBox(height: 15,),

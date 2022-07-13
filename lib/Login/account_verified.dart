@@ -87,7 +87,7 @@ class AccountVerifiedState extends State<AccountVerified> {
                Row(
                  mainAxisAlignment: MainAxisAlignment.center,
                  children: [
-                   Text('Your account has been verified.',style: StyleForApp.textStyle14NormalWhite,),
+                   Text('Your account has been verified.',style: StyleForApp.textStyle14BoldWhite,),
                  ],
                ),
                SizedBox(height: 15,),

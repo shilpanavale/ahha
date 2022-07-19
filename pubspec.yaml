@@ -39,6 +39,7 @@ dependencies:
   liquid_swipe:
   path:
   syncfusion_flutter_charts: ^20.2.38
+  flutter_share: ^2.0.0
 
 dev_dependencies:
   flutter_test:

@@ -26,7 +26,7 @@ class AccountVerifiedState extends State<AccountVerified> {
     // setState(() {
     //  loginStatus = preferences.getBool("islogin");
     // });
-    var _duration = Duration(seconds: 2);
+    var _duration = Duration(seconds: 1);
     return Timer(_duration, navigationPage);
   }
 

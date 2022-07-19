@@ -1,7 +1,9 @@
 import 'package:demo/Utils/app_theme.dart';
 import 'package:demo/Utils/asset_files.dart';
+import 'package:demo/change_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
@@ -91,24 +93,20 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
               padding: const EdgeInsets.all(8.0),
               child:
               ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
                   itemCount: title.length,
                   itemBuilder: (_, index) {
                     final item = title[index];
-                    return Container(
-                      decoration: BoxDecoration(
-                        // border: Border.all(),
-                          color: ColorsForApp.blackLightColor,
-                          borderRadius: BorderRadius.circular(10.0)
-                      ),
-                      child: Card(
-                        // this key is required to save and restore ExpansionTile expanded state
-                        //key: PageStorageKey(item['id']),
-                        key: PageStorageKey<String>(title.elementAt(index)),
-                        color: ColorsForApp.blackLightColor,
-                        elevation: 4,
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          // border: Border.all(),
+                            color: ColorsForApp.blackLightColor,
+                            borderRadius: BorderRadius.circular(15.0)
+                        ),
                         child: ExpansionTile(
-                          trailing: const Icon(Icons.arrow_forward_ios_rounded,color: Colors.white,size: 20,),
+                          key: PageStorageKey<String>(title.elementAt(index)),
+                          //trailing: const Icon(Icons.arrow_forward_ios_rounded,color: Colors.white,size: 20,),
                           leading: Container(
                             height: 30,width: 30,
                             padding: const EdgeInsets.all(3.0),
@@ -118,21 +116,22 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                             ),
                             child: Icon(Icons.bar_chart_sharp, color: ColorsForApp.greenColor),
                           ),
-                          controlAffinity: ListTileControlAffinity.leading,
-                          childrenPadding:
-                          const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 20),
-                          expandedCrossAxisAlignment: CrossAxisAlignment.end,
+                          //controlAffinity: ListTileControlAffinity.leading,
+                          //childrenPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                         // expandedCrossAxisAlignment: CrossAxisAlignment.end,
                           maintainState: true,
                           collapsedBackgroundColor: ColorsForApp.blackVeryLightColor,
+                          collapsedIconColor: ColorsForApp.white,
+                          iconColor: ColorsForApp.greenColor,
                           title: Text(item,style: StyleForApp.textStyle13NormalWhite),
                           // contents
                           children: [
                             item=="Wellness Index"? SizedBox(
-                              height: 350,
+                              height: MediaQuery.of(context).size.height,
                               child: DefaultTabController(
                                 length: 4,
-                                child: Column(
+                                child: ListView(
+                                  physics: NeverScrollableScrollPhysics(),
                                   children: [
                                     Container(
                                       constraints:  BoxConstraints.expand(
@@ -150,7 +149,7 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                                           ]),
                                     ),
                                     SizedBox(
-                                      height: 300,
+                                      height: MediaQuery.of(context).size.height,
                                       child: TabBarView(
                                           physics: ScrollPhysics(),
                                           viewportFraction: 1.0,
@@ -162,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                                               child: Text("Articles Body"),
                                             ),
                                             Container(
-                                              child: Text("Home Body"),
+                                              child: ChangePage()
                                             ),
                                             Container(
                                               child: Text("Home Body"),
@@ -183,56 +182,6 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                     );
                   }))
       ),
-
-
-      /*ListView.builder(
-           // shrinkWrap: true,
-             // scrollDirection: Axis.horizontal,
-            itemCount: title.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(3.0),
-                child: Container(
-                  height: 60,
-                  decoration: BoxDecoration(
-                    // border: Border.all(),
-                      color: ColorsForApp.blackLightColor,
-                      borderRadius: BorderRadius.circular(10.0)
-                  ),
-                  child:ExpansionTile(
-                  iconColor: Colors.white,
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
-                  collapsedIconColor:ColorsForApp.greenColor ,
-                    leading: Container(
-                      height: 30,width: 30,
-                      padding: EdgeInsets.all(3.0),
-                      decoration: BoxDecoration(
-                          borderRadius:  BorderRadius.all(Radius.circular(8.0)),
-                        color: ColorsForApp.nearlyWhite
-                      ),
-                      child: Icon(Icons.bar_chart_sharp, color: ColorsForApp.greenColor),
-                    ),
-                  title:Text(title[index],style: StyleForApp.textStyle13NormalWhite,) ,
-                    childrenPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                    expandedCrossAxisAlignment: CrossAxisAlignment.end,
-                    controlAffinity: ListTileControlAffinity.leading,
-                    maintainState: true,
-                  children: [
-                    Column(
-                      children: const [
-                        ListTile(title: Text("shilpa"),)
-                      ],
-                    ),
-                  ],
-                ) ,
-
-                  */ /*Center(
-                    child: Text(title[index],style: StyleForApp.textStyle13NormalWhite,),),
-                ),*/ /*
-              )
-              );
-            }),*/
-
 
       bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.white,
@@ -400,7 +349,11 @@ class _CurrentScoreState extends State<CurrentScore>{
                 children: [
                   Icon(Icons.thumb_up_alt_outlined,color: ColorsForApp.nearlyWhite,size: 20,),
                  // SizedBox(width: 10,),
-                  Icon(Icons.share,color: ColorsForApp.nearlyWhite,size: 20,)
+                  InkWell(
+                    onTap: (){
+                      share();
+                    },
+                      child: Icon(Icons.share,color: ColorsForApp.nearlyWhite,size: 20,))
                 ],
               )
             ],
@@ -409,7 +362,13 @@ class _CurrentScoreState extends State<CurrentScore>{
       ],
     );
   }
-
+  Future<void> share() async {
+    await FlutterShare.share(
+        title: 'Example share',
+        text: 'Example share text',
+        linkUrl: 'https://flutter.dev/',
+        chooserTitle: 'Example Chooser Title');
+  }
 }
 class ChartData {
   ChartData(this.x, this.y);

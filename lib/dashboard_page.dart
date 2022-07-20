@@ -1,6 +1,5 @@
 import 'package:demo/Utils/app_theme.dart';
 import 'package:demo/Utils/asset_files.dart';
-import 'package:demo/dashboard_page1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -65,39 +64,19 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
         backgroundColor: ColorsForApp.appBackGround,
         elevation: 0,
         title: Container(
-              height: 80,
-              width: 110,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15.0),
-                color: Colors.transparent,
-                image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: AssetImage(
-                    AssetsFiles.ahhaaLogo,
-                  ),
-                ),
+          height: 80,
+          width: 110,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15.0),
+            color: Colors.transparent,
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              image: AssetImage(
+                AssetsFiles.ahhaaLogo,
               ),
             ),
-        actions: [
-          Container(
-              height: 80,
-              child:Center(child: Text("Login",style: StyleForApp.textStyle13NormalWhite,))
           ),
-          Container(
-              height: 80,
-              child:Center(
-                  child: IconButton(
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>DB1()));
-                    },
-                    icon: Icon(Icons.menu,color: ColorsForApp.white,),
-                  )
-              )
-          )
-        ],
-
-
-
+        ),
       ),
       body: SizedBox(
           height: MediaQuery
@@ -184,9 +163,6 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
               )
 
 
-            ],
-          )
-    )
     );
   }
 
@@ -287,7 +263,7 @@ class _CurrentScoreState extends State<CurrentScore>{
           height: 180,
           child: Column(
             children: [
-              SizedBox(
+              Container(
                 height: 150,
                 child: SfCartesianChart(
                     title: ChartTitle(text: 'Wellness index',alignment:ChartAlignment.near,textStyle: StyleForApp.textStyle13NormalWhite),

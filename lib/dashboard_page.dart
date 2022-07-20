@@ -1,5 +1,6 @@
 import 'package:demo/Utils/app_theme.dart';
 import 'package:demo/Utils/asset_files.dart';
+import 'package:demo/dashboard_page1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -64,19 +65,39 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
         backgroundColor: ColorsForApp.appBackGround,
         elevation: 0,
         title: Container(
-          height: 80,
-          width: 110,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.0),
-            color: Colors.transparent,
-            image: DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage(
-                AssetsFiles.ahhaaLogo,
+              height: 80,
+              width: 110,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                color: Colors.transparent,
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage(
+                    AssetsFiles.ahhaaLogo,
+                  ),
+                ),
               ),
             ),
+        actions: [
+          Container(
+              height: 80,
+              child:Center(child: Text("Login",style: StyleForApp.textStyle13NormalWhite,))
           ),
-        ),
+          Container(
+              height: 80,
+              child:Center(
+                  child: IconButton(
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>DB1()));
+                    },
+                    icon: Icon(Icons.menu,color: ColorsForApp.white,),
+                  )
+              )
+          )
+        ],
+
+
+
       ),
       body: SizedBox(
           height: MediaQuery
@@ -87,179 +108,85 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
               .of(context)
               .size
               .width,
-          child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child:
-              ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                  itemCount: title.length,
-                  itemBuilder: (_, index) {
-                    final item = title[index];
-                    return Container(
-                      decoration: BoxDecoration(
-                        // border: Border.all(),
-                          color: ColorsForApp.blackLightColor,
-                          borderRadius: BorderRadius.circular(10.0)
-                      ),
-                      child: Card(
-                        // this key is required to save and restore ExpansionTile expanded state
-                        //key: PageStorageKey(item['id']),
-                        key: PageStorageKey<String>(title.elementAt(index)),
-                        color: ColorsForApp.blackLightColor,
-                        elevation: 4,
-                        child: ExpansionTile(
-                          trailing: const Icon(Icons.arrow_forward_ios_rounded,color: Colors.white,size: 20,),
-                          leading: Container(
-                            height: 30,width: 30,
-                            padding: const EdgeInsets.all(3.0),
-                            decoration: const BoxDecoration(
-                                borderRadius:  BorderRadius.all(Radius.circular(8.0)),
-                                color: ColorsForApp.nearlyWhite
-                            ),
-                            child: Icon(Icons.bar_chart_sharp, color: ColorsForApp.greenColor),
-                          ),
-                          controlAffinity: ListTileControlAffinity.leading,
-                          childrenPadding:
-                          const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 20),
-                          expandedCrossAxisAlignment: CrossAxisAlignment.end,
-                          maintainState: true,
-                          collapsedBackgroundColor: ColorsForApp.blackVeryLightColor,
-                          title: Text(item,style: StyleForApp.textStyle13NormalWhite),
-                          // contents
-                          children: [
-                            item=="Wellness Index"? SizedBox(
-                              height: 350,
-                              child: DefaultTabController(
-                                length: 4,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      constraints:  BoxConstraints.expand(
-                                        height: 40, width: MediaQuery.of(context).size.width,
-                                      ),
-                                      child:  TabBar(
-                                          isScrollable: true,
-                                          indicatorColor: Colors.green,
-                                          labelStyle: StyleForApp.textStyle13NormalWhite,
-                                          tabs: const [
-                                            Tab(text: "Current Score"),
-                                            Tab(text: "Previous Score"),
-                                            Tab(text: "Change"),
-                                            Tab(text: "Recommendations"),
-                                          ]),
-                                    ),
-                                    SizedBox(
-                                      height: 300,
-                                      child: TabBarView(
-                                          physics: ScrollPhysics(),
-                                          viewportFraction: 1.0,
-                                          children: [
-                                            Container(
-                                              child: CurrentScore(),
-                                            ),
-                                            Container(
-                                              child: Text("Articles Body"),
-                                            ),
-                                            Container(
-                                              child: Text("Home Body"),
-                                            ),
-                                            Container(
-                                              child: Text("Home Body"),
-                                            ),
-                                          ]),
-                                    )
-
-                                  ],
-                                ),
-                              )
-                            ):const Text("")
-
-
-
-                          ],
-                        ),
-                      ),
-                    );
-                  }))
-      ),
-
-
-      /*ListView.builder(
-           // shrinkWrap: true,
-             // scrollDirection: Axis.horizontal,
-            itemCount: title.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(3.0),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10.0),
                 child: Container(
-                  height: 60,
+                  width: double.infinity,
+                  height: 40,
                   decoration: BoxDecoration(
-                    // border: Border.all(),
-                      color: ColorsForApp.blackLightColor,
-                      borderRadius: BorderRadius.circular(10.0)
+                      color: ColorsForApp.blackVeryLightColor, borderRadius: BorderRadius.circular(20)),
+                  child: Center(
+                    child: TextField(
+                      decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.search),
+                          suffixIcon: IconButton(
+                            icon:  Icon(Icons.mic,color: ColorsForApp.greenColor,),
+                            onPressed: () {
+                              /* Clear the search field */
+                            },
+                          ),
+                          hintText: 'Type how you feel',
+                          contentPadding: EdgeInsets.all(17),
+                          hintStyle: StyleForApp.textStyle13NormalWhite,
+                          border: InputBorder.none),
+                    ),
                   ),
-                  child:ExpansionTile(
-                  iconColor: Colors.white,
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
-                  collapsedIconColor:ColorsForApp.greenColor ,
-                    leading: Container(
-                      height: 30,width: 30,
-                      padding: EdgeInsets.all(3.0),
-                      decoration: BoxDecoration(
-                          borderRadius:  BorderRadius.all(Radius.circular(8.0)),
-                        color: ColorsForApp.nearlyWhite
-                      ),
-                      child: Icon(Icons.bar_chart_sharp, color: ColorsForApp.greenColor),
-                    ),
-                  title:Text(title[index],style: StyleForApp.textStyle13NormalWhite,) ,
-                    childrenPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                    expandedCrossAxisAlignment: CrossAxisAlignment.end,
-                    controlAffinity: ListTileControlAffinity.leading,
-                    maintainState: true,
-                  children: [
-                    Column(
-                      children: const [
-                        ListTile(title: Text("shilpa"),)
+                ),
+              ),
+              Builder(
+                  builder: (context) {
+                    return Row(
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.arrow_back_ios),
+                          onPressed: (){
+                            if(_tabController.index > 0){
+                              _tabController.animateTo(_tabController.index - 1);
+                            }else{
+                              Scaffold.of(context).showSnackBar(SnackBar(content: Text("Can't go back"),));
+                            }
+                          },
+                        ),
+                        Expanded(
+                          child: TabBar(
+                            isScrollable: true,
+                            controller: _tabController,
+                            labelStyle: TextStyle(
+                                color: Colors.black
+                            ),
+                            unselectedLabelColor: Colors.black,
+                            labelColor: Colors.blue,
+                            tabs: List.generate(
+                              20,
+                                  (index) {
+                                return Tab(
+                                  text: "Tab $index",
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.arrow_forward_ios),
+                          onPressed: (){
+                            if(_tabController.index+1 < 20){
+                              _tabController.animateTo(_tabController.index + 1);
+                            }else{
+                              Scaffold.of(context).showSnackBar(SnackBar(content: Text("Can't move forward"),));
+                            }
+                          },
+                        ),
                       ],
-                    ),
-                  ],
-                ) ,
-
-                  */ /*Center(
-                    child: Text(title[index],style: StyleForApp.textStyle13NormalWhite,),),
-                ),*/ /*
+                    );
+                  }
               )
-              );
-            }),*/
 
 
-      bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.grey[400],
-          backgroundColor: ColorsForApp.appBackGround,
-          currentIndex: tabIndex,
-          onTap: (int index) {
-            setState(() {
-              tabIndex = index;
-            });
-          },
-          items: const [
-            BottomNavigationBarItem(
-              label: '',
-              icon: Icon(Icons.home),
-            ),
-            BottomNavigationBarItem(
-              label: '',
-              icon: Icon(Icons.bar_chart_sharp),
-
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline),
-              label: '',
-            ),
-          ]),
-
+            ],
+          )
+    )
     );
   }
 
@@ -360,7 +287,7 @@ class _CurrentScoreState extends State<CurrentScore>{
           height: 180,
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 height: 150,
                 child: SfCartesianChart(
                     title: ChartTitle(text: 'Wellness index',alignment:ChartAlignment.near,textStyle: StyleForApp.textStyle13NormalWhite),

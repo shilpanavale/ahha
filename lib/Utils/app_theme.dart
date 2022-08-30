@@ -17,6 +17,8 @@ class ColorsForApp{
 class StyleForApp{
   static const String fontName = 'WorkSans';
   static TextStyle  textStyle13NormalWhite = const TextStyle(fontSize: 13,color: Colors.white);
+  static TextStyle  textStyle12NormalGray = const TextStyle(fontSize: 12,color: Colors.grey);
+  static TextStyle  textStyle13Gray = const TextStyle(fontSize: 13,color: Colors.grey);
   static TextStyle  textStyle14BoldWhite = const TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold);
   static TextStyle  textStyle14BoldGreen =  TextStyle(fontSize: 15,color: ColorsForApp.greenColor,fontWeight: FontWeight.bold);
 
@@ -26,6 +28,27 @@ class StyleForApp{
     fontSize: 24,
     letterSpacing: 0.27,
     color: ColorsForApp.white,
+  );
+  static const TextStyle subHeadline = TextStyle(
+    fontFamily: fontName,
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
+    letterSpacing: 0.27,
+    color: ColorsForApp.white,
+  );
+  static const TextStyle extraSmaller12dp = TextStyle(
+    fontFamily: fontName,
+    fontWeight: FontWeight.normal,
+    fontSize: 12,
+    letterSpacing: 0.27,
+    color: ColorsForApp.white,
+  );
+  static  TextStyle headlineGreenColor = TextStyle(
+    fontFamily: fontName,
+    fontWeight: FontWeight.bold,
+    fontSize: 24,
+    letterSpacing: 0.27,
+    color: ColorsForApp.greenColor,
   );
 
 

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "650780710070",
+    "project_id": "ahha-d21a5",
+    "storage_bucket": "ahha-d21a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650780710070:android:b9078c8283997bc17cc217",
+        "android_client_info": {
+          "package_name": "com.aaha.demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "650780710070-o1t45sb432pb2a519tdb0g1bamkbp65d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwi_YKGH5eGHQaf2psk0beQhVKuHRKf3g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "650780710070-o1t45sb432pb2a519tdb0g1bamkbp65d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

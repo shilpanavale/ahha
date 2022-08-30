@@ -11,5 +11,8 @@ class AssetsFiles{
   static String openEmail="assets/open_email.png";
   static String accountCheck="assets/account_check.png";
   static String accountSuccess="assets/account_success.png";
+  static String dialGlowGif="assets/Dia glow app_3.gif";
+  static String mindGif="assets/Mind icon anim_1_2.gif";
+  static String angry="assets/angry.png";
 
 }

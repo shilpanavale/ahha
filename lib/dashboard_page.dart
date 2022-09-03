@@ -1,3 +1,4 @@
+import 'package:demo/Dashboard/new_home.dart';
 import 'package:demo/Dashboard/search_result.dart';
 import 'package:demo/Dashboard/zoom_drawer.dart';
 import 'package:demo/Utils/app_theme.dart';
@@ -96,7 +97,11 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                 child:Center(
                     child: IconButton(
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>ZoomDrawerPage()));
+                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>ZoomDrawerPage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+
+
+
                       },
                       icon: Icon(Icons.menu,color: ColorsForApp.white,),
                     )

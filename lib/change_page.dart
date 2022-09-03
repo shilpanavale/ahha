@@ -152,24 +152,23 @@ class _PastPageState extends State<Past> {
       const SizedBox(height: 10,),
       Text("Months Vs wellbeing index",style: StyleForApp.textStyle13NormalWhite,),
       const SizedBox(height: 10,),
-      Expanded(
-        child: Container(
-          decoration: BoxDecoration(
-            // border: Border.all(),
-              color: ColorsForApp.blackVeryLightColor,
-              borderRadius: BorderRadius.circular(10.0)
-          ),
+      Container(
+        height: 200,
+        decoration: BoxDecoration(
+          // border: Border.all(),
+            color: ColorsForApp.blackVeryLightColor,
+            borderRadius: BorderRadius.circular(10.0)
+        ),
 
-         // height: 160,
-          width: MediaQuery.of(context).size.width,
-          child:Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: LineChart(
-              mainData(),
-            ),
+       // height: 160,
+        width: MediaQuery.of(context).size.width,
+        child:Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: LineChart(
+            mainData(),
           ),
-              ),
-      ),
+        ),
+            ),
 
 
 

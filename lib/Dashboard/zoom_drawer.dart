@@ -1,5 +1,6 @@
 import 'package:demo/Dashboard/drawer.dart';
 import 'package:demo/Dashboard/wellbeing_index.dart';
+import 'package:demo/dashboard_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
@@ -27,8 +28,8 @@ class _ZoomDrawerPageState extends State<ZoomDrawerPage> {
     return ZoomDrawer(
       controller: _drawerController,
       style: DrawerStyle.defaultStyle,
-      menuScreen:const DrawerMenuScreen(),
-      mainScreen: WellbeingIndex(),
+      menuScreen: DrawerMenuScreen(zoomController: _drawerController),
+      mainScreen: MyHomePage(zoomController: _drawerController),
       borderRadius: 24.0,
       showShadow: true,
       //angle: -12.0,

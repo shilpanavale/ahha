@@ -1,4 +1,5 @@
 import 'package:demo/Dashboard/dominant_past.dart';
+import 'package:demo/Dashboard/zoom_drawer.dart';
 import 'package:demo/Utils/app_theme.dart';
 import 'package:demo/Utils/asset_files.dart';
 import 'package:demo/change_page.dart';
@@ -11,7 +12,9 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 
 
 class WellbeingIndex extends StatefulWidget {
-  const WellbeingIndex({Key? key}) : super(key: key);
+  final zoomController;
+  const WellbeingIndex({Key? key, this.zoomController}) : super(key: key);
+
 
 
   @override
@@ -50,6 +53,10 @@ class _WellbeingIndexState extends State<WellbeingIndex>  with TickerProviderSta
       appBar: AppBar(
         backgroundColor: ColorsForApp.appBackGround,
         elevation: 0,
+          leading: InkWell(
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>ZoomDrawerPage())),
+            child: Icon(Icons.arrow_back_outlined),
+          ),
         title: Text("Wellness Index",style: StyleForApp.textStyle13NormalWhite,)
       ),
       body: SizedBox(

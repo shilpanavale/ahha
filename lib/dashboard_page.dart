@@ -15,7 +15,8 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  final zoomController;
+  const MyHomePage({Key? key,this.zoomController}) : super(key: key);
 
 
   @override
@@ -73,6 +74,10 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
         appBar: AppBar(
           backgroundColor: ColorsForApp.appBackGround,
           elevation: 0,
+          leading: InkWell(
+            onTap: () => widget.zoomController.toggle(),
+            child: Icon(Icons.menu),
+          ),
           title: Container(
             height: 80,
             width: 110,

@@ -8,6 +8,8 @@ import 'package:demo/Utils/text_fields.dart';
 import 'package:demo/dashboard_page.dart';
 import 'package:flutter/material.dart';
 
+import '../Dashboard/zoom_drawer.dart';
+
 
 class AccountVerified extends StatefulWidget {
 
@@ -36,7 +38,7 @@ class AccountVerifiedState extends State<AccountVerified> {
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(
-        builder: (BuildContext context) => const MyHomePage(),
+        builder: (BuildContext context) =>  ZoomDrawerPage(),
       ),
           (route) => false,
     );

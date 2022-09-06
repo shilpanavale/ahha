@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:demo/Dashboard/dominant_emotion.dart';
+import 'package:demo/Dashboard/wellbeing_index.dart';
 import 'package:demo/Utils/app_theme.dart';
 import 'package:demo/Utils/asset_files.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,7 +10,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class DrawerMenuScreen extends StatefulWidget {
-  const DrawerMenuScreen({Key? key}) : super(key: key);
+  final zoomController;
+  const DrawerMenuScreen({Key? key, this.zoomController}) : super(key: key);
 
   @override
   DrawerMenuScreenState createState() => DrawerMenuScreenState();
@@ -56,6 +58,10 @@ class DrawerMenuScreenState extends State<DrawerMenuScreen> {
                     ),
                   ),
                   ListTile(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>WellbeingIndex(zoomController: widget.zoomController,)));
+
+                    },
                     leading: Container(
                       height: 30,width: 30,
                       padding: const EdgeInsets.all(3.0),
@@ -79,7 +85,7 @@ class DrawerMenuScreenState extends State<DrawerMenuScreen> {
                     ),
                     title: Text("Dominant Emotion",style: StyleForApp.textStyle13NormalWhite),
                     onTap:(){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>DominantEmotion()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>DominantEmotion(zoomController: widget.zoomController)));
                     },
                   ),
                   ListTile(

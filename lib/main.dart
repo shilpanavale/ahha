@@ -21,10 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:  ChangeNotifierProvider(
-         create: (_) => MenuProvider(),
-        child: HomeScreen(),
-       ),
+      home:  SplashPage()
     );
   }
 }

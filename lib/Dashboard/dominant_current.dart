@@ -140,10 +140,9 @@ class _DominantCurrentState extends State<DominantCurrent>{
                     child: Text("Emotion Vs Days",style: StyleForApp.textStyle13NormalWhite,),
                   ),
                   SizedBox(
-                    //height: 200,
+                    height: 200,
                       child: SfCartesianChart(
                           plotAreaBorderWidth: 0,
-
                           primaryXAxis: NumericAxis(
                               title: AxisTitle(text:  'Days',textStyle: TextStyle(color: Colors.grey,fontSize: 13)),
                               majorGridLines: const MajorGridLines(width: 0)),

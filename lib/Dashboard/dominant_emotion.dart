@@ -1,5 +1,7 @@
 import 'package:demo/Dashboard/dominant_current.dart';
 import 'package:demo/Dashboard/dominant_past.dart';
+import 'package:demo/Dashboard/drawer.dart';
+import 'package:demo/Dashboard/zoom_drawer.dart';
 import 'package:demo/Utils/app_theme.dart';
 import 'package:demo/Utils/asset_files.dart';
 import 'package:demo/change_page.dart';
@@ -12,7 +14,8 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 
 
 class DominantEmotion extends StatefulWidget {
-  const DominantEmotion({Key? key}) : super(key: key);
+  final zoomController;
+  const DominantEmotion({Key? key, this.zoomController}) : super(key: key);
 
 
   @override
@@ -51,6 +54,10 @@ class _DominantEmotionState extends State<DominantEmotion>  with TickerProviderS
       appBar: AppBar(
         backgroundColor: ColorsForApp.appBackGround,
         elevation: 0,
+          leading: InkWell(
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>ZoomDrawerPage())),
+            child: Icon(Icons.arrow_back_outlined),
+          ),
         title: Text("Dominant Emotion",style: StyleForApp.textStyle13NormalWhite,)
       ),
       body: SizedBox(
@@ -63,6 +70,7 @@ class _DominantEmotionState extends State<DominantEmotion>  with TickerProviderS
               .size
               .width,
           child: Padding(
+
               padding: const EdgeInsets.all(8.0),
               child:DefaultTabController(
                 length: 4,
@@ -85,8 +93,12 @@ class _DominantEmotionState extends State<DominantEmotion>  with TickerProviderS
                               Tab(text: "Grow"),
                             ]),
                       ),
-                      Expanded(
-                        // height: 300,
+                      SizedBox(
+                        height: MediaQuery
+                            .of(context)
+                            .size
+                            .height,
+
                         child: TabBarView(
                           // physics: const ScrollPhysics(),
                             viewportFraction: 1.0,

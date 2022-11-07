@@ -5,15 +5,9 @@ import 'package:demo/Model/SearchModelClass.dart';
 import 'package:demo/Utils/api_constants.dart';
 import 'package:demo/Utils/app_theme.dart';
 import 'package:demo/Utils/asset_files.dart';
-import 'package:demo/dashboard_page1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_carousel_slider/carousel_slider.dart';
-import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
-import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
 import 'package:flutter_speech/flutter_speech.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:http/http.dart' as http;
 class SearchResultPage extends StatefulWidget {
   final String searchText;
@@ -116,7 +110,7 @@ class _SearchResultPageState extends State<SearchResultPage>  with TickerProvide
                             child: Text(
                               searchList![index].title!,
                               textAlign: TextAlign.left,
-                              style: TextStyle(fontSize: 15,color: Colors.white),
+                              style: TextStyle(fontFamily:'Poppins',fontSize: 15,color: Colors.white),
                             ),
                           ),
                         ),
@@ -127,7 +121,7 @@ class _SearchResultPageState extends State<SearchResultPage>  with TickerProvide
                   )
                   : const Text(
                 'No results found',
-                style: TextStyle(fontSize: 24,color: Colors.white),
+                style: TextStyle(fontFamily:'Poppins',fontSize: 24,color: Colors.white),
               ),
             ),
 

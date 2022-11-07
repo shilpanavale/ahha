@@ -1,9 +1,8 @@
 import 'package:demo/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'Dashboard/new_home.dart';
 import 'dashboard_page.dart';
-import 'liquid_swipe.dart';
+
 
 void main() {
   runApp(const MyApp());

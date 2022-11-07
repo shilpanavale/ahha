@@ -1,9 +1,7 @@
-import 'package:demo/Dashboard/new_home.dart';
 import 'package:demo/Dashboard/search_result.dart';
-import 'package:demo/Dashboard/zoom_drawer.dart';
+import 'package:demo/Dashboard/drawer.dart';
 import 'package:demo/Utils/app_theme.dart';
 import 'package:demo/Utils/asset_files.dart';
-import 'package:demo/dashboard_page1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
@@ -11,12 +9,10 @@ import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
 import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:flutter_speech/flutter_speech.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
+
 
 class MyHomePage extends StatefulWidget {
-  final zoomController;
-  const MyHomePage({Key? key,this.zoomController}) : super(key: key);
+  const MyHomePage({Key? key}) : super(key: key);
 
 
   @override
@@ -43,14 +39,18 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
     _tabController.animateTo(2);
   }
   GlobalKey<_MyHomePageState> _sliderKey = GlobalKey();
-  final List<Color> colors = [
-    Colors.red,
-    Colors.orange,
-    Colors.yellow,
-    Colors.green,
-    Colors.blue,
-    Colors.indigo,
-    Colors.purple,
+  final List<String> images = [
+    "assets/home_images/1.jpg",
+    "assets/home_images/2.jpg",
+    "assets/home_images/2_1.jpg",
+    "assets/home_images/3.jpg",
+    "assets/home_images/3_1.jpg",
+    //"assets/home_images/4.jpg",
+   // "assets/home_images/4_1.jpg"
+  ];
+  final List setGoal=[
+    AssetsFiles.setGoal2,
+    AssetsFiles.setGoal1,
   ];
   final List<String> letters = [
     "A",
@@ -71,13 +71,10 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: ColorsForApp.appBackGround,
+        drawer: const DrawerPage(),
         appBar: AppBar(
           backgroundColor: ColorsForApp.appBackGround,
           elevation: 0,
-          leading: InkWell(
-            onTap: () => widget.zoomController.toggle(),
-            child: Icon(Icons.menu),
-          ),
           title: Container(
             height: 80,
             width: 110,
@@ -92,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
               ),
             ),
           ),
-          actions: [
+         /* actions: [
             Container(
                 height: 80,
                 child:Center(child: Text("Login",style: StyleForApp.textStyle13NormalWhite,))
@@ -112,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                     )
                 )
             )
-          ],
+          ],*/
         ),
         body: SizedBox(
             height: MediaQuery
@@ -144,10 +141,11 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
                       decoration: BoxDecoration(
-                          image: DecorationImage(
-                            fit: BoxFit.fill,
+                          image: const DecorationImage(
+                            fit: BoxFit.fitHeight,
+                            opacity: 120.0,
                             image: AssetImage(
-                              AssetsFiles.mountain,
+                              "assets/rect_img/25.jpg",
                             ),
                           ),
                           borderRadius: BorderRadius.circular(15),
@@ -158,7 +156,7 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Practice",style: StyleForApp.textStyle13NormalWhite,textAlign: TextAlign.start),
+                            Text("Practice",style: StyleForApp.textStyle20BoldGreen,textAlign: TextAlign.start),
                             const Text("Awareness",style: StyleForApp.headline,),
                           ],
                         ),
@@ -289,15 +287,9 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    height: 60,width: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight:Radius.circular(20)
-                          ,bottomLeft: Radius.circular(20),bottomRight:Radius.circular(20) ),
-
-                    ),
-                    child: Image.asset(AssetsFiles.dialGlowGif,fit: BoxFit.cover,),
-                  ),
+                  ClipRRect(
+                     // borderRadius: BorderRadius.circular(10.0),
+                      child: Image.asset(AssetsFiles.dialGlowGif, height: 60,width: 80,fit: BoxFit.contain,)),
                   Text("Dia",style: StyleForApp.headlineGreenColor,),
                   Text("Talk to me",style: StyleForApp.textStyle13NormalWhite,)
                 ],
@@ -314,7 +306,16 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Icon(Icons.sports_golf_rounded,color: ColorsForApp.greenColor,),
+                 // Image.asset(AssetsFiles.searchIcon,width: 40,height: 60,),
+                  Container(
+                    height: 60,width: 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight:Radius.circular(20)
+                          ,bottomLeft: Radius.circular(20),bottomRight:Radius.circular(20) ),
+
+                    ),
+                    child: Image.asset(AssetsFiles.searchIcon,fit: BoxFit.cover,),
+                  ),
                   Text("Search",style: StyleForApp.headlineGreenColor,),
                   Text("Type how you feel",style: StyleForApp.textStyle13NormalWhite,textAlign: TextAlign.center)
                 ],
@@ -360,11 +361,14 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     fit: BoxFit.fill,
+                    opacity: 80,
                     image: AssetImage(
-                      AssetsFiles.mountain,
-                    ),
+                      "assets/rect_img/227.jpg"
+                    ),/*image: AssetImage(
+                      AssetsFiles.rect1,
+                    ),*/
                   ),
                   borderRadius: BorderRadius.circular(15),color: ColorsForApp.blackVeryLightColor),
               height: 130,
@@ -374,7 +378,7 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Improve",style: StyleForApp.textStyle13NormalWhite,textAlign: TextAlign.start),
+                    Text("Improve",style: StyleForApp.textStyle20BoldGreen,textAlign: TextAlign.start),
                     Text("Empathy",style: StyleForApp.headline,),
                   ],
                 ),
@@ -389,7 +393,7 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                   image: DecorationImage(
                     fit: BoxFit.fill,
                     image: AssetImage(
-                      AssetsFiles.mountain,
+                      "assets/rect_img/25.jpg",
                     ),
                   ),
                   borderRadius: BorderRadius.circular(15),color: ColorsForApp.blackVeryLightColor),
@@ -445,7 +449,7 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                             child: Container(
                                 width:150,
                                 decoration: BoxDecoration(
-                                  color: ColorsForApp.appBackGround,
+                                 // color: ColorsForApp.t,
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Column(
@@ -459,7 +463,7 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                                               image: DecorationImage(
                                                 fit: BoxFit.fill,
                                                 image: AssetImage(
-                                                  AssetsFiles.mountain,
+                                                  setGoal[index],
                                                 ),
                                               ),
                                               borderRadius: BorderRadius.circular(10)),
@@ -485,7 +489,7 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                           ),
                         );
                       },
-                      itemCount: 4,scrollDirection: Axis.horizontal,),
+                      itemCount: setGoal.length,scrollDirection: Axis.horizontal,),
                   ),
                   /* IconButton(
                                   icon: Icon(Icons.arrow_forward_ios,color: Colors.white),
@@ -515,24 +519,34 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
         child: CarouselSlider.builder(
             key: _sliderKey,
             unlimitedMode: true,
+            //enableAutoSlider: true,
+           // autoPlayInterval: Duration(seconds: 3),
+            //autoPlayAnimationDuration: Duration(milliseconds: 800),
+            autoSliderTransitionCurve: Curves.fastOutSlowIn,
             slideBuilder: (index) {
+              //print(images[index]);
               return Container(
                 alignment: Alignment.center,
 
                 decoration: BoxDecoration(
-                    color: colors[index],
-                    borderRadius: BorderRadius.circular(15)),
-                child: Text(
+                    ///color: colors[index],
+
+                    image: DecorationImage(
+                      image: AssetImage(images[index].toString()),
+                      fit: BoxFit.fill
+                    ),
+                    borderRadius: BorderRadius.circular(10)),
+               /* child: Text(
                   letters[index],
                   style: TextStyle(fontSize: 200, color: Colors.white),
-                ),
+                ),*/
               );
             },
             slideTransform: CubeTransform(),
             slideIndicator: CircularSlideIndicator(
               padding: EdgeInsets.only(bottom: 15),
             ),
-            itemCount: colors.length),
+            itemCount: images.length),
       ),
     );
  }

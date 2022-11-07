@@ -6,21 +6,25 @@ import 'package:flutter/material.dart';
 class ColorsForApp{
 
   static Color appBackGround = const Color(0xFF070707);
-  static Color blackLightColor = const Color(0xFF181818);
-  static Color blackVeryLightColor = const Color(0xFF363636);
-  static Color greenColor = const Color(0xFFA4C756);
+  static Color blackLightColor = HexColor("#000000");
+  static Color greenColor = HexColor("#96c73b");
+  //static Color blackVeryLightColor = const Color(0xFF363636);
+  static Color blackVeryLightColor =  HexColor("#1a1a1a");
+  //static Color greenColor = const Color(0xFFA4C756);
   static const Color nearlyWhite = Color(0xFFFAFAFA);
   static const Color white = Color(0xFFFFFFFF);
 
 }
 
 class StyleForApp{
-  static const String fontName = 'WorkSans';
-  static TextStyle  textStyle13NormalWhite = const TextStyle(fontSize: 13,color: Colors.white);
-  static TextStyle  textStyle12NormalGray = const TextStyle(fontSize: 12,color: Colors.grey);
-  static TextStyle  textStyle13Gray = const TextStyle(fontSize: 13,color: Colors.grey);
-  static TextStyle  textStyle14BoldWhite = const TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold);
-  static TextStyle  textStyle14BoldGreen =  TextStyle(fontSize: 15,color: ColorsForApp.greenColor,fontWeight: FontWeight.bold);
+  static const String fontName = 'Poppins';
+  static TextStyle  textStyle13NormalWhite = const TextStyle(fontFamily:fontName,fontSize: 13,color: Colors.white);
+  static TextStyle  textStyle14NormalWhite = const TextStyle(fontFamily:fontName,fontSize: 14,color: Colors.white);
+  static TextStyle  textStyle12NormalGray = const TextStyle(fontFamily:fontName,fontSize: 12,color: Colors.grey);
+  static TextStyle  textStyle13Gray = const TextStyle(fontFamily:fontName,fontSize: 13,color: Colors.grey);
+  static TextStyle  textStyle14BoldWhite = const TextStyle(fontFamily:fontName,fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold);
+  static TextStyle  textStyle14BoldGreen =  TextStyle(fontFamily:fontName,fontSize: 15,color: ColorsForApp.greenColor,fontWeight: FontWeight.bold);
+  static TextStyle  textStyle20BoldGreen =  TextStyle(fontFamily:fontName,fontSize: 20,color: ColorsForApp.greenColor,fontWeight: FontWeight.w900);
 
   static const TextStyle headline = TextStyle(
     fontFamily: fontName,

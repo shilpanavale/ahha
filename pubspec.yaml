@@ -52,6 +52,7 @@ dependencies:
   fl_chart: ^0.55.1
   intl:
   flutter_zoom_drawer: ^3.0.3
+  convex_bottom_bar:
 
 dev_dependencies:
   flutter_test:

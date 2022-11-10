@@ -4,6 +4,7 @@ class AssetsFiles{
   static String launcher="assets/Ahhaa app launcher_1.gif";
   static String mountain="assets/square.jpg";
   static String ahhaaLogo="assets/ahhaLogo.png";
+  static String greenBulb="assets/logobulb.png";
   static String check_box="assets/check_box.png";
   static String email="assets/email.png";
   static String google="assets/google.png";

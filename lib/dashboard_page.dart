@@ -1,3 +1,4 @@
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:demo/Dashboard/search_result.dart';
 import 'package:demo/Dashboard/drawer.dart';
 import 'package:demo/Utils/app_theme.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
 import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:flutter_speech/flutter_speech.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -31,6 +33,8 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
     Tab(text: 'Relationship',),
     Tab(text: 'Mind & Money',)
   ];
+
+  int currentPage=0;
   @override
   void initState() {
     super.initState();
@@ -71,24 +75,37 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: ColorsForApp.appBackGround,
-        drawer: const DrawerPage(),
+       // drawer: const DrawerPage(),
         appBar: AppBar(
           backgroundColor: ColorsForApp.appBackGround,
           elevation: 0,
-          title: Container(
-            height: 80,
-            width: 110,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),
-              color: Colors.transparent,
-              image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage(
-                  AssetsFiles.ahhaaLogo,
-                ),
+          leading: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Container(
+              height: 35,
+              width: 35,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                color: Colors.transparent,
+                /*image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage(
+                    AssetsFiles.greenBulb,
+                  ),
+                ),*/
               ),
+              child: Image.asset(AssetsFiles.greenBulb,color: ColorsForApp.greenColor, fit: BoxFit.contain,),
             ),
           ),
+         title: Row(
+           mainAxisAlignment: MainAxisAlignment.end,
+           children: [
+             FaIcon(FontAwesomeIcons.gear,size: 20, color: ColorsForApp.greenColor),
+             SizedBox(width: 10,),
+             FaIcon(FontAwesomeIcons.user,size: 20, color: ColorsForApp.greenColor),
+           ],
+         ),
+
          /* actions: [
             Container(
                 height: 80,
@@ -125,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                 children: [
                   search(),
                   sliderListUI(),
-                  carsoulUI(),
+                 // carsoulUI(),
                   dia(),
                   Padding(
                     padding: EdgeInsets.all(10.0),
@@ -177,7 +194,23 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                 ],
               ),
             )
-        )
+        ),
+        bottomNavigationBar:  ConvexAppBar(
+            backgroundColor: ColorsForApp.blackLightColor,
+      style: TabStyle.react,
+      items: [
+        TabItem(icon: FaIcon(FontAwesomeIcons.house,size: 20, color: ColorsForApp.greenColor)),
+        TabItem(icon: Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Image.asset(AssetsFiles.searchIcon,width: 30,height: 30,),
+        )),
+        TabItem(icon:Image.asset(AssetsFiles.dialGlowGif)),
+        TabItem(icon: FaIcon(FontAwesomeIcons.bell,size: 20, color: ColorsForApp.greenColor)),
+        TabItem(icon:Image.asset(AssetsFiles.mindGif)),
+      ],
+      initialActiveIndex: 1,
+      onTap: (int i) => print('click index=$i'),
+    ),
     );
   }
   void activateSpeechRecognizer() {
@@ -241,7 +274,11 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
         width: double.infinity,
         height: 40,
         decoration: BoxDecoration(
-            color: ColorsForApp.blackVeryLightColor, borderRadius: BorderRadius.circular(20)),
+            color: ColorsForApp.blackVeryLightColor,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: ColorsForApp.greenColor)
+          ),
+
         child: Center(
           child: TextField(
             controller: searchController,style: StyleForApp.textStyle13NormalWhite,

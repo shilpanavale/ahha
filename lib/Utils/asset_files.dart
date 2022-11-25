@@ -15,6 +15,7 @@ class AssetsFiles{
   //static String dialGlowGif="assets/Dia glow app_4.gif";
   static String dialGlowGif="assets/dia-icon.png";
   static String mindGif="assets/Mind icon anim_4.gif";
+  static String mindIcon="assets/rect_img/mind-icon.png";
   static String angry="assets/angry.png";
 
   //Todo :Use images on home page
@@ -27,6 +28,8 @@ class AssetsFiles{
   //rect file for recommandation ui
 
   static String rect1="assets/rect_img/227.jpg";
+  static String lineBg="assets/rect_img/line_bg.png";
+  static String lineBg2="assets/rect_img/line_bg2.png";
 
 
 }

@@ -44,13 +44,7 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
   }
   GlobalKey<_MyHomePageState> _sliderKey = GlobalKey();
   final List<String> images = [
-    "assets/home_images/1.jpg",
-    "assets/home_images/2.jpg",
-    "assets/home_images/2_1.jpg",
-    "assets/home_images/3.jpg",
-    "assets/home_images/3_1.jpg",
-    //"assets/home_images/4.jpg",
-   // "assets/home_images/4_1.jpg"
+   AssetsFiles.lineBg2,
   ];
   final List setGoal=[
     AssetsFiles.setGoal2,
@@ -142,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                 children: [
                   search(),
                   sliderListUI(),
-                 // carsoulUI(),
+                  carsoulUI(),
                   dia(),
                   Padding(
                     padding: EdgeInsets.all(10.0),
@@ -200,15 +194,12 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
       style: TabStyle.react,
       items: [
         TabItem(icon: FaIcon(FontAwesomeIcons.house,size: 20, color: ColorsForApp.greenColor)),
-        TabItem(icon: Padding(
-          padding: const EdgeInsets.only(top: 10.0),
-          child: Image.asset(AssetsFiles.searchIcon,width: 30,height: 30,),
-        )),
+        TabItem(icon: Image.asset(AssetsFiles.searchIcon,width: 40,height: 40,)),
         TabItem(icon:Image.asset(AssetsFiles.dialGlowGif)),
         TabItem(icon: FaIcon(FontAwesomeIcons.bell,size: 20, color: ColorsForApp.greenColor)),
-        TabItem(icon:Image.asset(AssetsFiles.mindGif)),
+        TabItem(icon:Image.asset(AssetsFiles.mindIcon)),
       ],
-      initialActiveIndex: 1,
+      initialActiveIndex: 2,
       onTap: (int i) => print('click index=$i'),
     ),
     );
@@ -547,9 +538,9 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
  }
  Widget carsoulUI(){
     return  Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.only(left: 15.0,right: 15.0,top: 10.0,bottom: 10.0),
       child: Container(
-        height: 200,
+        height: 150,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15)),
 
@@ -570,7 +561,7 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
 
                     image: DecorationImage(
                       image: AssetImage(images[index].toString()),
-                      fit: BoxFit.fill
+                      fit: BoxFit.contain
                     ),
                     borderRadius: BorderRadius.circular(10)),
                /* child: Text(
@@ -593,13 +584,13 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
       child: Container(
         decoration: BoxDecoration(
             color: ColorsForApp.blackVeryLightColor, borderRadius: BorderRadius.circular(15)),
-        height: 60,
+        height: 40,
         child: Builder(
             builder: (context) {
               return Row(
                 children: [
                   IconButton(
-                    icon: Icon(Icons.arrow_back_ios,color: Colors.white),
+                    icon: Icon(Icons.arrow_back_ios,color: Colors.white,size: 15,),
                     onPressed: (){
                       if(_tabController.index > 0){
                         _tabController.animateTo(_tabController.index - 1);
@@ -622,7 +613,7 @@ class _MyHomePageState extends State<MyHomePage>  with TickerProviderStateMixin 
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.arrow_forward_ios,color: Colors.white),
+                    icon: Icon(Icons.arrow_forward_ios,color: Colors.white,size: 15,),
                     onPressed: (){
                       if(_tabController.index+1 < 20){
                         _tabController.animateTo(_tabController.index + 1);
